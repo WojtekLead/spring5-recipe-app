@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Recipe Home</title>
+</head>
+<body>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>description</th>
+        <th>prepTime</th>
+        <th>cookTime</th>
+        <th>servings</th>
+        <th>source</th>
+        <th>url</th>
+        <th>directions</th>
+        <th>categories</th>
+        <th>ingredients</th>
+        <th>id</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="recipie : ${recipies}">
+        <td th:text="${recipie.id}">1</td>
+        <td th:text="${recipie.description}">popop</td>
+        <td th:text="${recipie.prepTime}">10</td>
+        <td th:text="${recipie.cookTime}">10</td>
+        <td th:text="${recipie.servings}">10</td>
+        <td th:text="${recipie.source}">10</td>
+        <td th:text="${recipie.url}">10</td>
+        <td th:text="${recipie.directions}">10</td>
+        <td>
+            <span th:each="category : ${recipie.categories}"
+                  th:text="${category.description + ' '}"/> <span
+                th:if="${category?.description?.size() == 0}">none</span>
+        </td>
+        <tr th:each="ingredient : ${recipie.ingredients}">
+        <td th:text="${ingredient.id}"/></td>
+        <td th:text="${ingredient.description}"/></td>
+        </tr>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
